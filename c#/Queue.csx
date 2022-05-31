@@ -14,7 +14,10 @@ public class Item
 public class Queue
 {
     int size;
-
+    int qItems = 0;
+    Item head;
+    Item tail;
+    
     public Queue(int size)
     {
         this.size = size;
@@ -22,10 +25,12 @@ public class Queue
 
     public void Isfull()
     {
-        
-    }
-    public void EnQueue(int item)
-    {
 
+    }
+    public void EnQueue(int value)
+    {
+        if(this.qItems < this.size)
+        {
+        }
     }
 }
