@@ -16,14 +16,16 @@ public class LinkedList
 {
     public Node head = null;
     public int size = 0;
-    // Insert First Node
+    
+    // Big O (1); 
     public void InsertAtFirst(int value)
     {
         this.head = new Node(value, this.head);
         this.size++;
     }
 
-    // Insert Last Node
+    
+    // Big O (1);
     public void InsertAtLast(int value)
     {
         Node CurrentNode = this.head;
@@ -34,46 +36,49 @@ public class LinkedList
         }
         this.size++;
     }
-
-    // Insert At Index
-    public void InsertAtIndex(int index, int value)
+    
+    // Big O (n)
+    public int this[int _index]
     {
-        
-        if(index == 0) InsertAtFirst(value); 
-        else if(index == this.size) InsertAtFirst(value);
-        else{
+        get
+        {
             Node CurrentNode = this.head;
-            Node NextNode = this.head.pointer;
+            int value = -1;
             for(int i = 0; i < this.size; i++)
             {
-                if(i + 1 == index){
-                    CurrentNode.pointer = new Node(value, NextNode);
-                }else{
+                if(i != _index)
+                {
                     CurrentNode = CurrentNode.pointer;
-                    NextNode = NextNode.pointer; 
+                }else if (i == _index){
+                    value = CurrentNode.value;
+                }else
+                {
+                    value = -1;
                 }
-
             }
-            this.size++;
+            return value;
         }
-    }
-
-    // Get At Index
-    public int GetAtIndex(int index)
-    {
-        Node CurrentNode = this.head;
-        int result = 0;
-        for(int i = 0; i < this.size; i++)
+        set
         {
-            if(index < 0) return -1;
-            if(index > this.size) return -1;
-            if(i == index) result = CurrentNode.value;
-            else CurrentNode = CurrentNode.pointer;
+
+            if(_index == 0) InsertAtFirst(value); 
+            else if(_index == this.size) InsertAtFirst(value);
+            else{
+                Node CurrentNode = this.head;
+                Node NextNode = this.head.pointer;
+                for(int i = 0; i < this.size; i++)
+                {
+                    if(i + 1 == _index){
+                        CurrentNode.pointer = new Node(value, NextNode);
+                    }else{
+                        CurrentNode = CurrentNode.pointer;
+                        NextNode = NextNode.pointer; 
+                    }
+
+                }
+                this.size++;
+            }
         }
-        
-        this.size++;
-        
-        return result;
     }
 
     // Show values
@@ -84,16 +89,16 @@ public class LinkedList
         {
             Console.WriteLine(i + " : " + CurrentNode.value.ToString());
             CurrentNode = CurrentNode.pointer;
-        }
-        Console.WriteLine(this.size.ToString());        
+        }     
     }
 }
 
 LinkedList list = new LinkedList();
-list.InsertAtFirst(10);
-list.InsertAtFirst(30);
-list.InsertAtFirst(50);
-list.InsertAtLast(20);
-list.InsertAtIndex(0, 250);
+list[0] = 50;
+list[1] = 150;
+list[2] = 250;
+list[3] = 350;
+list[4] = 450;
 list.ShowValues();
-Console.WriteLine(list.GetAtIndex(3).ToString());
+Console.WriteLine("=========");
+Console.WriteLine(list[0].ToString());
