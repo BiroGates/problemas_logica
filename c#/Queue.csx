@@ -4,10 +4,17 @@ public class Item
 {
     public int value;
     public Item pointer;
+    public Item previous;
+
     public Item(int value, Item pointer)
     {
         this.value = value;
-        this.pointer = pointer; 
+        this.pointer = pointer;
+    }
+
+    public void SetPrevious(Item previous)
+    {
+        this.previous = previous;
     }
 }
 
@@ -19,25 +26,23 @@ public class Queue
 
     public void Enqueue(int value)
     {
-        this.head = new Item(value, this.head);
+        
+        if(this.size == 0)
+        {
+            this.head = new Item(value, this.head); 
+            this.tail = this.head;
+        }else{
+            this.head = new Item(value, this.head);
+            this.head.pointer.SetPrevious(this.head);
+        }
         this.size++;
     }
 
     public void DeQueue()
     {
-        Item CurrentData = this.head;
-        Item NextData = CurrentData.pointer;
+        this.tail = this.tail.previous;
+        this.tail.pointer = null;
         
-        for(int i = 0; i < this.size; i++)
-        {
-            if(NextData.pointer == null)
-            {
-                CurrentData.pointer = null;
-            }else{
-                CurrentData = CurrentData.pointer;
-                NextData = CurrentData.pointer;
-            }            
-        }
         this.size--;
     }
 
@@ -65,6 +70,9 @@ q.Enqueue(50);
 q.Enqueue(150);
 q.Enqueue(250);
 q.Enqueue(350);
-q.DeQueue();
 q.Enqueue(450);
+q.DeQueue();
 q.ShowData();
+Console.WriteLine("=====");
+Console.WriteLine(q.head.value.ToString());
+Console.WriteLine(q.tail.value.ToString());
