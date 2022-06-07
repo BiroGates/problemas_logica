@@ -48,25 +48,22 @@ function topThreeWords(text) {
         counter++;
     }
     console.log(allTheWords);
-    console.log(allTheWordsSize);
     
-    let min = 0;
-    let mid = 0
-    let max = 0;
-
-    let listedNumbers = [];
-
-    let primero;
-    let segundo;
-    let terceiro;
-    
-    for(item in allTheWords) {
-        listedNumbers.push(allTheWords[item]); 
+    let max = allTheWords['a'];
+    let mid = allTheWords['a'];
+    let min = allTheWords['a'];
+    for(item in allTheWords){
+        if(allTheWords[item] > max) max = allTheWords[item];
+        if(allTheWords[item] < min) min = allTheWords[item];
     }
+    for(item in allTheWords){
+        if(allTheWords[item] > mid && allTheWords[item] != max) mid = allTheWords[item];
+
+    }
+
     
     let result = [max, mid, min];
     console.log(result);
-    console.log(listedNumbers);
 }
 
-topThreeWords('a a c b b');
+topThreeWords(veryLongText);
