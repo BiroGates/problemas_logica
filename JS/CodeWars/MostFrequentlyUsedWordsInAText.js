@@ -11,10 +11,11 @@ function topThreeWords(text) {
     text = text.replace(/,/gi, '');
     text = text.replace(/\./gi, '');
     text = text.replace(/\n/gi, '');
+    text = text.replace(/\//gi, '');
+    text = text.trim();
 
-    console.log(text);
-
-    let allTheWords = {};
+    let allTheWords = [];
+    let dataStr = [];
     let currentWord = '';
     let currentIndex = 0;
     let textLen = text.length;
@@ -24,46 +25,39 @@ function topThreeWords(text) {
         if(text[i + 1] === ' ') {
             currentWord = text.substring(currentIndex, i + 1)
             currentWord = currentWord.trim().toLowerCase();
-            console.log(currentWord);
             currentIndex = i + 1;
-            allTheWords[currentWord] = 0;
+            if(!allTheWords.includes(currentWord)) allTheWords.push(currentWord);
         }
     }
+    
+    console.log(allTheWords);
 
     let counter = 1;
-    let allTheWordsSize = Object.keys(allTheWords).length;
-    // Big O(n*n);
-    for(item in allTheWords) {
+    for(item of allTheWords) {
         let regular;
         if(counter == 1){
             regular = `(${item} )`;
-        }else if (counter == allTheWordsSize) {
+        }else if (counter == allTheWords.length) {
             regular = `( ${item})`;
         }else{
             regular = `( ${item} )`;
         }
-        console.log(regular);
         let re = new RegExp(regular, "gi");  
-        allTheWords[item] = text.match(re).length;
+        dataStr.push({
+            palavra: text.match(re)[0].trim().toLowerCase(),
+            qtd: text.match(re).length
+        });
         counter++;
     }
-    console.log(allTheWords);
     
-    let max = allTheWords['a'];
-    let mid = allTheWords['a'];
-    let min = allTheWords['a'];
-    for(item in allTheWords){
-        if(allTheWords[item] > max) max = allTheWords[item];
-        if(allTheWords[item] < min) min = allTheWords[item];
-    }
-    for(item in allTheWords){
-        if(allTheWords[item] > mid && allTheWords[item] != max) mid = allTheWords[item];
-
-    }
-
+    dataStr.sort((a, b) => b.qtd - a.qtd);
     
-    let result = [max, mid, min];
+    let result = [];
+    if(dataStr[0] != undefined) result.push(dataStr[0].palavra);
+    if(dataStr[1] != undefined) result.push(dataStr[1].palavra);
+    if(dataStr[2] != undefined) result.push(dataStr[2].palavra);
+    
     console.log(result);
 }
 
-topThreeWords(veryLongText);
+topThreeWords("  , e   .. ");
