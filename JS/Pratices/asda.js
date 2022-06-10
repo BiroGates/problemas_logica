@@ -1,4 +1,10 @@
-let text = 'Frogs caved among a frog with a frog'
-let regular = /( frog)/;
-let reg = new RegExp(regular, 'gi');
-console.log(text.match(reg));
+let text = 'the hashtag generator'
+
+let regExp = new RegExp(/ [a-z]/gi);
+let toGoUp = text.match(regExp);
+
+for(item in toGoUp) {
+    
+}
+
+console.log(text.match(regExp));
