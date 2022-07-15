@@ -1,8 +1,8 @@
 // Big O Log (n);
-function palin(name){
+function palin(x){
     let palin = true;
-    for(let i = 0; i < (name.length - 1) / 2; i++){
-        if(name[i] != name[(name.length - 1) - i]){
+    for(let i = 0; i < (x.length - 1) / 2; i++){
+        if(x[i] != x[(x.length - 1) - i]){
             palin = false;        
             break;
         }    

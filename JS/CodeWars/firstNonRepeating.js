@@ -1,4 +1,4 @@
-// Big O (n * n);
+// Big O (n^2);
 function firstNonRepeating(str) {
     let len = str.length;
     let repeated = false;

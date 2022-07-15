@@ -1,3 +1,6 @@
+from pip import main
+
+
 lista = []
 newLista = []
 index = 0
