@@ -1,11 +1,10 @@
+// Vitoria moral!
 function getLengthOfMissingArray(arr) {
     let len = arr.length - 1;
     let newArr = arr.sort()
     let resul = 0;
     let temp;
     let temp2;
-
-    console.log(arr.length);
 
     for(let i = 0; i < len; i++){
         
@@ -14,7 +13,7 @@ function getLengthOfMissingArray(arr) {
             temp = arr[i];
             arr[i] = arr[i + 1]
             arr[i + 1] = temp;
-            
+
             for(let j = i; j >= 0; j--){
                 temp2 = arr[j]
                 if(temp2 > temp){
@@ -37,5 +36,3 @@ function getLengthOfMissingArray(arr) {
 }
 getLengthOfMissingArray([ [1, 3], [4, 2, 2], [3, 0, 4, 2], [2, 4, 3, 3, 0, 2, 1, 4],
     [1, 2, 1, 1, 4], [4, 0, 2, 2, 2, 4, 4, 4, 0], [2, 3, 2, 1, 1, 0, 2, 3, 1, 4], [4, 4, 2, 0, 1, 2] ]);
-
-// 

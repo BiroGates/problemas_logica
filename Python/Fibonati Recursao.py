@@ -5,6 +5,7 @@ lista = []
 newLista = []
 index = 0
 num = int(input("Qual a quantidade de expressoes que deseja ? : "))
+
 for c in range(num):
     lista.append(c + 1)
 

@@ -1,7 +1,10 @@
 // NOME DISSO AQUI É CURRYING
+
+
+
 function multiplier(mult){
-    return function (number){
-        return number * mult
+    return function (number) {
+        return mult * number;
     }
 }
 

@@ -3,7 +3,7 @@ const readLine = require('prompt-sync')();
 
 function binarySearch(lis, ele, com, fim){
     let mid = Math.floor((com + fim) / 2);
-    
+
     // Mostrando a posição pro usuario;
     if(ele == lis[com])return com; 
     if(ele == lis[mid])return mid; 

@@ -66,8 +66,7 @@ function topThreeWords(text) {
         result.sort()
         result.reverse();
         return result
-    } 
-        
+    }   
     
     return result
 }
