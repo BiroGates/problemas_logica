@@ -1,0 +1,6 @@
+db.session.updateOne({_id: ObjectId("63546bce88bd8ffd2076d5e5")}, 
+                    {"$set": {  "nome": "Nome bem dahora", 
+                                "categoria": "ahaha" ,
+                                "ordem": 1651
+                                }}
+);

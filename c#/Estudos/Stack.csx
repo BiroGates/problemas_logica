@@ -41,7 +41,7 @@ class Stack
     public void Pop()
     {
         this.head = this.head.next;
-        this.size--;    
+        this.size--;
     }
 
     public void Top()

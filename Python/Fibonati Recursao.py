@@ -22,5 +22,3 @@ def fib(l, i=0):
     else:
         newLista.append(l[i] + l[i - 1])
         fib(l, i + 1)
-
-fib(lista)

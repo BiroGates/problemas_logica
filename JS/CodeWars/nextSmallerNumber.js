@@ -1,12 +1,13 @@
-function nextSmaller(n) {
+function nextSmall(num) {
+    
+    let str = '';
+    let numString = String(num);
 
+    for(let i = 0; i < numString.length; i++) {
+        if(Number(numString[i]) > Number(str[i])) str = str + numString[i];
+        else str = numString[i] + str;
+    }
 
+    console.log(str);
 }
-nextSmaller(21);
-
-let str = '12';
-let re = new RegExp('[790]');
-let x = re.test(str);
-console.log(x);
-
-
+nextSmall(713);
