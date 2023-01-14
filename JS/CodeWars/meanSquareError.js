@@ -9,7 +9,7 @@ function meanSquareError(firstArr, secondArr) {
     }
     
     for(let i = 0; i < len; i++) {
-        result += sum[i];rct4v
+        result += sum[i];
     }
     
     return (result/len);
