@@ -9,3 +9,6 @@ public class DataStore<T>
     }
 }
 
+DataStore<String> instance = new DataStore<String>();
+instance.valor = "Aloha";
+instance.MostrarTipo();
