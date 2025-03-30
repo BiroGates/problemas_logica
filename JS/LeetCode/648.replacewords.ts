@@ -15,6 +15,7 @@ function replaceWords(dictionary: string[], sentence: string): string {
         const regex = new RegExp(`${word}`, 'g');
         word.match(regex);
     }
+    return '0';
 };
 
 

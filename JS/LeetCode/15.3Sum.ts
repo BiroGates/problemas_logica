@@ -1,7 +1,4 @@
-
-
-
-
+// More or less like this
 function threeSum(nums: number[]): number[][] {
     nums = nums.sort();
 
