@@ -1,7 +1,3 @@
-
-
-
-
 const solution = (arr: number[], visited: any) => {
     const result: number[][] = [];
     for(let i = 0; i < arr.length; i++) {

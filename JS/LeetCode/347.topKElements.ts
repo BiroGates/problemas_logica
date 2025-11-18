@@ -1,36 +1,37 @@
-function topKFrequent(nums: number[], k: number): number[] {
-    const bucketArray: number[][] = new Array(nums.length + 1);
-    const counts: Record<string, number>  = {};
-    const result: number[] = [];
-    let count: number = 0;
+
+
+
+const topKFrequent = (nums: number[], k: number): number[] => {
+  const bucket: number[][] = new Array(nums.length + 1).fill(0).map(() => []);
+  const count = new Map<string, number>();
+  const solution: number[] = [];
+
+  for(let i = 0; i < nums.length; i++) {
+    const key = `${nums[i]}`;
     
-    if(nums.length === 0) return [];
-    
-    for(let i = 0; i < nums.length; i++) {
-        const key = nums[i].toString();
-        counts[key] = (counts[key] || 0 ) + 1;
+    if(!count.get(key))
+      count.set(key, 1);
+    else
+      count.set(key, count.get(key) as unknown as number + 1);
+  }
+
+  for(const [key, value] of count) {
+    bucket[value].push(Number(key))
+  }
+
+  for(let i = nums.length; i >= 0; i--) {
+    if (!bucket[i].length)
+      continue
+
+    if (solution.length === k) {
+      return solution;
     }
-    
-    for(const [key, value] of Object.entries(counts)) {
-        if(!bucketArray[value]) {
-          bucketArray[value] = [Number(key)];
-        } else {
-          bucketArray[value].push(Number(key));
-        }
+
+    for(let j = 0; j < bucket[i].length; j++) {
+      solution.push(bucket[i][j]);
     }
-    
-    for(let i = bucketArray.length; i > 0; i--) {
-        if(!bucketArray[i]) {
-          continue;
-        }
-    
-        for(let j = 0; j < bucketArray[i].length; j++) {
-            if(count < k) {
-                result.push(bucketArray[i][j]); 
-                count++;
-            }
-        }
-    }
-    
-    return result;
+  }
+  return solution;
 };
+
+console.log(topKFrequent([1], 2));
