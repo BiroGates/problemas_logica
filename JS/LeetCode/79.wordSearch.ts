@@ -6,8 +6,6 @@ function exist(board: string[][], word: string): boolean {
             return true;
         }
 
-
-
         if (row >= 0 
             && row < board.length 
             && colunm >= 0 
